@@ -9,9 +9,6 @@ process processA {
 	input:
 	val x from processAInput
 
-	output:
-	file "*.txt"
-
 	script:
 	"""
 	# Simulate the time the processes takes to finish
@@ -28,9 +25,6 @@ process processB {
 
 	input:
 	val x from processBInput
-
-	output:
-	file "*.txt"
 
 	script:
 	"""
