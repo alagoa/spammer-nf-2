@@ -37,20 +37,3 @@ process processB {
 	sleep \$timeToWait
 	"""
 }
-process processC {
-	publishDir "${params.output}/${task.hash}", mode: 'copy'
-
-	input:
-	val x from processBInput
-
-	script:
-	"""
-	# Simulate the time the processes takes to finish
-	timeToWait=\$(shuf -i ${params.processATimeRange} -n 1)
-	for i in {1..${numberFilesForProcessA}};
-	do echo teste > file_\${i}.txt
-	sleep ${params.processBTimeBetweenFileCreationInSecs}
-	done;
-	sleep \$timeToWait
-	"""
-}
